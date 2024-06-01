@@ -15,9 +15,8 @@ const FlashcardGenerator = () => {
             console.log(response.data);
             const formattedFlashcards = response.data.flashcards.map((flashcard, index) => ({
                 id: index + 1,
-                showTimer: false,
-                frontHtml: (<p>{flashcard.front}</p>),
-                backHtml: (<p>{flashcard.back}</p>),
+                front: (<p>{flashcard.front}</p>),
+                back: (<p>{flashcard.back}</p>),
                 // Add other properties if needed
             }));
             setFlashcards(formattedFlashcards);
@@ -52,6 +51,7 @@ const FlashcardGenerator = () => {
                     cards={flashcards}
                     controls={true}
                     showCount={true}
+                    // autoPlay={true}
                     onCardChange={(id, index) => console.log(`Card change detected: ID ${id}, Index: ${index}`)}
                     onCardFlip={(id, index, state) => console.log(`Card flipped: ID ${id}, Index: ${index}, Flipped: ${state}`)}
                 />
